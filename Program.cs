@@ -8,13 +8,6 @@ using System.Xml.Serialization;
 
 namespace FinalsProject
 {
-    public class BranchCombineTest
-    {
-        public void TestMethod()
-        {
-            Console.WriteLine("This is a test method for branch combine.");
-        }
-    }
     public class User
     {
         public virtual void Login()
