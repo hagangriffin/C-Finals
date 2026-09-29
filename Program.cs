@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace FinalsProject
 {
+    public class TestClass
+    {
+        public TestClass()
+        {
+            Console.WriteLine("Hello World");
+        }
+    }
     internal class Program
     {
         static void Main(string[] args)
