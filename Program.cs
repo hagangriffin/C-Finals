@@ -6,17 +6,17 @@ namespace FinalsProject
 {
     public class User
     {
+        public string username;
+        public string password;
+
         public virtual bool Login()
         {
-            String username = "";
-            String password = "";
-
             Console.WriteLine("Enter username: ");
             String inputUsername = Console.ReadLine();
             Console.WriteLine("Enter password: ");
             String inputPassword = Console.ReadLine();
 
-            if (inputUsername == username && inputPassword == password)
+            if (inputUsername == this.username && inputPassword == this.password)
             {
                 Console.WriteLine("Login successful");
                 return true;
@@ -135,6 +135,8 @@ namespace FinalsProject
         public UserInterface()
         {
             account.OnTransaction += message => Console.WriteLine(message);
+            user.username = "username";
+            user.password = "password";
         }
 
         // FIRST MENU
@@ -145,9 +147,7 @@ namespace FinalsProject
             while (choice != 4)
             {
                 Console.WriteLine("\n1. Login");
-                Console.WriteLine("2. Add Asset");
-                Console.WriteLine("3. Remove Asset");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("2. Exit");
 
                 choice = Convert.ToInt32(Console.ReadLine());
 
@@ -160,12 +160,6 @@ namespace FinalsProject
                         }
                         break;
                     case 2:
-                        // Call method to add asset
-                        break;
-                    case 3:
-                        // Call method to remove asset
-                        break;
-                    case 4:
                         Console.WriteLine("Goodbye!");
                         break;
                     default:
@@ -184,8 +178,10 @@ namespace FinalsProject
             {
                 Console.WriteLine("\n1. Add Transaction");
                 Console.WriteLine("2. Withdrawal");
-                Console.WriteLine("3. View Account Statement");
-                Console.WriteLine("4. Log Out");
+                Console.WriteLine("3. Add Asset");
+                Console.WriteLine("4. Remove Asset");
+                Console.WriteLine("5. View Account Statement");
+                Console.WriteLine("6. Log Out");
 
                 choice = Convert.ToInt32(Console.ReadLine());
 
@@ -196,13 +192,19 @@ namespace FinalsProject
                         account.Deposit(Convert.ToDecimal(Console.ReadLine()));
                         break;
                     case 2:
+                        // Call method to add asset
+                        break;
+                    case 3:
+                        // Call method to remove asset
+                        break;
+                    case 4:
                         Console.Write("Amount: ");
                         account.Withdraw(Convert.ToDecimal(Console.ReadLine()));
                         break;
-                    case 3:
+                    case 5:
                         account.ViewAccountStatement();
                         break;
-                    case 4:
+                    case 6:
                         Console.WriteLine("Logged out.");
                         break;
                     default:
@@ -217,6 +219,8 @@ namespace FinalsProject
     {
         static void Main(string[] args)
         {
+
+
             UserInterface ui = new UserInterface();
             ui.DisplayMenu();
         }
